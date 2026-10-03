@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-st-nucleo-l031k6", "id": "nucleo", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-led", "id": "led1", "top": 102, "left": 176.6, "attrs": { "color": "red" } },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 54.2,
+      "left": -96,
+      "attrs": { "color": "green", "xray": "1" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 138.35,
+      "left": 105.6,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 80.75,
+      "left": 105.6,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": 34.8,
+      "left": 176.6,
+      "attrs": { "color": "orange" }
+    }
+  ],
+  "connections": [
+    [ "$serialMonitor:TX", "nucleo:VCP_RX", "", [] ],
+    [ "$serialMonitor:RX", "nucleo:VCP_TX", "", [] ],
+    [ "nucleo:A0", "r1:1", "green", [ "h0" ] ],
+    [ "r1:2", "led1:C", "green", [ "v0" ] ],
+    [ "nucleo:3V3", "led1:A", "green", [ "h146.95", "v-17.99", "h-9.6" ] ],
+    [ "nucleo:GND.1", "btn1:1.r", "black", [ "h0" ] ],
+    [ "nucleo:D6", "btn1:2.r", "green", [ "h0" ] ],
+    [ "r2:2", "led2:C", "green", [ "v0" ] ],
+    [ "led2:A", "nucleo:3V3", "green", [ "h48", "v96", "h-185.35" ] ],
+    [ "r2:1", "nucleo:A5", "green", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
